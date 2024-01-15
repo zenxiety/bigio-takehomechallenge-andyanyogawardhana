@@ -2,8 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:takehomechallenge_andyanyogawardhana/models/characters_model.dart';
 import 'package:takehomechallenge_andyanyogawardhana/providers/home_provider.dart';
 import 'package:takehomechallenge_andyanyogawardhana/utils/constants/colors.dart';
+import 'package:takehomechallenge_andyanyogawardhana/views/screens/detail_screen.dart';
 import 'package:takehomechallenge_andyanyogawardhana/views/screens/home_screen.dart';
 
 void main() {
@@ -31,8 +33,8 @@ class MyApp extends StatelessWidget {
             onError: Colors.red,
             background: Colors.white,
             onBackground: Colors.white,
-            surface: Colors.black,
-            onSurface: Colors.black,
+            surface: AppColors.darkBrown,
+            onSurface: AppColors.darkBrown,
           ),
           textTheme: GoogleFonts.orbitTextTheme(
             Theme.of(context).textTheme,
@@ -51,6 +53,13 @@ class MyApp extends StatelessWidget {
             case "/home":
               return MaterialPageRoute(
                 builder: (context) => const HomeScreen(),
+              );
+            case "/detail":
+              return MaterialPageRoute(
+                builder: (context) {
+                  final args = settings.arguments as Result;
+                  return DetailScreen(character: args);
+                },
               );
           }
           return null;
