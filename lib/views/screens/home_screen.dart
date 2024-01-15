@@ -130,14 +130,25 @@ class _HomeScreenState extends State<HomeScreen> {
                               : Column(
                                   children: <Widget>[
                                     Padding(
-                                      padding: const EdgeInsets.all(16),
+                                      padding: const EdgeInsets.only(top: 16),
                                       child: Text(
                                         "THE CHARACTERS",
                                         style: GoogleFonts.bangers(
-                                          fontSize: 32,
+                                          fontSize: 36,
                                           letterSpacing: 2,
                                           color: AppColors.darkGreen,
                                         ),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 20),
+                                      child: Divider(
+                                        color: AppColors.darkBrown,
+                                        height: 2,
+                                        thickness: 2,
+                                        indent: 20,
+                                        endIndent: 20,
                                       ),
                                     ),
                                     for (var character
@@ -163,12 +174,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                             ),
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                           subtitle: Text(
-                                            character.species,
-                                            style: const TextStyle(
-                                                // fontWeight: FontWeight.bold,
-                                                ),
+                                            character.location.name,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                           trailing: character.status == "Alive"
                                               ? const Icon(
